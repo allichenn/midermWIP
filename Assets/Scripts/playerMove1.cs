@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class playerMove : MonoBehaviour
+public class playerMove1 : MonoBehaviour
 {
     /*[SerializedField]*/
     public float moveSpeed;
@@ -15,13 +15,21 @@ public class playerMove : MonoBehaviour
     bool orangeRiddle = false;
     bool yellowRiddle = false;
     bool greenRiddle = false;
+    bool blueRiddle = false;
+    bool indigoRiddle = false;
+    bool pinkRiddle = false;
     bool homeRiddle = false;
+
 
 
     bool eggActive = false;
     bool carrotActive = false;
     bool watermelonActive = false;
     bool donutActive = false;
+    bool sandwichActive = false;
+    bool cornActive = false;
+    bool teapotActive = false;
+
     //bool homeActive = false;
 
     public GameObject exclaimationPoint, exclaimationPoint2, object1;
@@ -176,6 +184,54 @@ public class playerMove : MonoBehaviour
                 Destroy(other.gameObject);
                 greenRiddle = false;
                 donutActive = false;
+                blueRiddle = true;
+            }
+        }  else if(other.gameObject.name == "blue" && blueRiddle == true){
+            if (Input.GetKey(KeyCode.Space)){
+                keyText.text = "FIND ME WHAT YOU CALL A WITCH AT A BEACH.";
+                exclaimationPoint2.SetActive(false);
+                Debug.Log("touched blue");
+                sandwichActive = true;
+            }
+        } else if(other.gameObject.name == "sandwich1" && sandwichActive == true){
+            if (Input.GetKey(KeyCode.Space)){
+                keyText.text = "HAHA, YES! A SANDWICH!\n\nTHANK YOU! \nIT'S GETTING LATE... YOU SHOULD HEAD HOME NOW.";
+                Debug.Log("found sandwich");
+                Destroy(other.gameObject);
+                blueRiddle = false;
+                sandwichActive = false;
+                indigoRiddle = true;
+            }
+        }  else if(other.gameObject.name == "indigo" && indigoRiddle == true){
+            if (Input.GetKey(KeyCode.Space)){
+                keyText.text = "I THREW AWAY THE OUTSIDE AND COOKED THE INSIDE, \nTHEN I ATE THE OUTSIDE AND THREW AWAY THE INSIDE. \nFIND WHAT I ATE. ";
+                exclaimationPoint2.SetActive(false);
+                Debug.Log("touched green");
+                cornActive = true;
+            }
+        } else if(other.gameObject.name == "corn1" && cornActive == true){
+            if (Input.GetKey(KeyCode.Space)){
+                keyText.text = "YES, CORN! IT WAS YUMMU. \n";
+                Debug.Log("found corn");
+                Destroy(other.gameObject);
+                indigoRiddle = false;
+                cornActive = false;
+                pinkRiddle = true;
+            }
+        }  else if(other.gameObject.name == "pink" && pinkRiddle == true){
+            if (Input.GetKey(KeyCode.Space)){
+                keyText.text = "I AM LOOKING FOR SOMETHING THAT \nSTARTS WITH T, ENDS WITH T, \nAND IS FILLED WITH T.";
+                exclaimationPoint2.SetActive(false);
+                Debug.Log("touched pink");
+                teapotActive = true;
+            }
+        } else if(other.gameObject.name == "teapot1" && teapotActive == true){
+            if (Input.GetKey(KeyCode.Space)){
+                keyText.text = "YES, GOTTA LOVE TEA!\n\nTHANK YOU SO MUCH FOR YOUR HELP! \nIT'S GETTING LATE... YOU SHOULD HEAD HOME NOW.";
+                Debug.Log("found teapot");
+                Destroy(other.gameObject);
+                pinkRiddle = false;
+                teapotActive = false;
                 homeRiddle = true;
             }
         } else if(other.gameObject.name == "homeDoor" && homeRiddle == true){
@@ -186,3 +242,7 @@ public class playerMove : MonoBehaviour
         } 
     } 
 }
+
+//FIND ME WHAT YOU CALL A WITCH AT A BEACH.
+//I THREW AWAY THE OUTSIDE AND COOKED THE INSIDE, THEN I ATE THE OUTSIDE AND THREW AWAY THE INSIDE. FIND WHAT I ATE. 
+//I AM LOOKING FOR SOMETHING THAT STARTS WITH T, ENDS WITH T, AND IS FILLED WITH T.
