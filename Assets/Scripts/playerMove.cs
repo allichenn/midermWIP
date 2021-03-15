@@ -40,6 +40,8 @@ public class playerMove : MonoBehaviour
     public float sightDist;
     Animator myAnim;
 
+    bool hitRed, hitOrange, hitYellow, hitGreen;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,11 +54,29 @@ public class playerMove : MonoBehaviour
         Debug.DrawRay(transform.position, movement, Color.red);
         if(hit.collider != null){
             //Debug.Log("hit npc");
-            if(hit.collider.tag == "NPC"){
-                Debug.Log("hit npc");
-                hitItem = true;
+            if(hit.collider.tag == "red"){
+                Debug.Log("hit red");
+                exclaimationPoint.SetActive(false);
+                exclaimationPoint.transform.position = pointOne.position;
+                hitRed = true;
+            } else if(hit.collider.tag == "orange"){
+                Debug.Log("hit orange");
+                exclaimationPoint.SetActive(true);
+                exclaimationPoint.transform.position = pointTwo.position;
+                hitOrange = true;
+            } else if(hit.collider.tag == "yellow"){
+                Debug.Log("hit yellow");
+                exclaimationPoint.SetActive(true);
+                exclaimationPoint.transform.position = pointThree.position;
+                hitYellow = true;
+            } else if(hit.collider.tag == "green"){
+                Debug.Log("hit green");
+                hitGreen = true;
             } else {
                 hitItem = false;
+                hitOrange = false;
+                hitYellow = false;
+                hitGreen = false;
             }
         }
 

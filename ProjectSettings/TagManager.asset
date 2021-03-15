@@ -6,6 +6,10 @@ TagManager:
   tags:
   - item
   - NPC
+  - red
+  - orange
+  - yellow
+  - green
   layers:
   - Default
   - TransparentFX
