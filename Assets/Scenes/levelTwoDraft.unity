@@ -11045,7 +11045,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe3d234b114cb43e5a3816d55e193499, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  moveSpeed: 1
   rb: {fileID: 1848228360}
   keyText: {fileID: 727965308}
   endText: {fileID: 927730464}
